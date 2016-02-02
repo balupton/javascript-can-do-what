@@ -296,7 +296,7 @@ node index.js
 #### CLI Apps
 
 #### Tooling
-Browserify, Gulp, Grunt, DocPad, Yeoman, Babel, npm scripts.
+Browserify, Gulp, Grunt, Mocha, PhantomJS, DocPad, Yeoman, Babel, ChainyJS, npm scripts.
 
 
 ### 2013+ Modern Web
