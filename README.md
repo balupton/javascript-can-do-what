@@ -139,7 +139,7 @@ var Person = Class.extend({
     return this.dancing
   }
 });
- 
+
 var Ninja = Person.extend({
 	init: function(){
 		this._super(false)
@@ -152,14 +152,14 @@ var Ninja = Person.extend({
 		return true
 	}
 });
- 
+
 var p = new Person(true)
 p.dance() // => true
- 
+
 var n = new Ninja()
 n.dance() // => false
 n.swingSword() // => true
- 
+
 // Should all be true
 p instanceof Person && p instanceof Class &&
 n instanceof Ninja && n instanceof Person && n instanceof Class
@@ -207,7 +207,7 @@ history.go(2);  // alerts "location: http://example.com/example.html?page=3, sta
 - Solution: <span class="step">[Education](https://github.com/browserstate/history.js/wiki/Intelligent-State-Handling) and [polyfills](https://github.com/browserstate/history.js/) were developed by the community.</span>
 
 
-### 2008+ Early Single Page Web Applications
+### 2008+ Single Page Web Applications
 In this time, JavaScript was seeing good cross-browser consistency (for the most part), advanced server-side backends, and the emergency of Client-Side Web Applications.
 Think of your typical Facebook commenting workflow.
 
@@ -245,11 +245,55 @@ Inbox.messages.add(newMessage);
 - Problem: <span class="step">While the model and controller layers were fantastic, the view layer was too primitive.</span>
 - Solution: <span class="step">View layer was partnered with templating libraries and engines, however things like nested views in lists remained difficult to manage.</span>
 
+### TodoMVC
+
 In 2012, other client-side application libraries reached maturity, such as [Angular](https://en.wikipedia.org/wiki/AngularJS) and [Ember](https://en.wikipedia.org/wiki/Ember.js), and the [TodoMVC](https://github.com/tastejs/todomvc) project was created.
 
 - Problem: <span class="step">Client-side applications were starting to get overly complicated, slow, and difficult to manage.</span>
 - Solution: <span class="step">Package managers and tooling were required. Simpler methodologies were also required.</span>
 
+
+#### ReactJS
+
+``` javascript
+var TodoList = React.createClass({
+	render: function () {
+		var createItem = function (item) {
+			return <li key={item.id}>{item.text}</li>
+		}
+		return <ul>{this.props.items.map(createItem)}</ul>
+	}
+})
+var TodoApp = React.createClass({
+	getInitialState: function () {
+		return {items: [], text: ''}
+	},
+	onChange: function (e) {
+		this.setState({text: e.target.value})
+	},
+	handleSubmit: function (e) {
+	e.preventDefault()
+		var nextItems = this.state.items.concat([{
+			text: this.state.text, id: Date.now()
+		}])
+		var nextText = ''
+		this.setState({items: nextItems, text: nextText})
+	},
+	render: function () {
+		return (
+			<div>
+			<h3>TODO</h3>
+			<TodoList items={this.state.items} />
+			<form onSubmit={this.handleSubmit}>
+				<input onChange={this.onChange} value={this.state.text} />
+				<button>{'Add #' + (this.state.items.length + 1)}</button>
+			</form>
+			</div>
+		)
+	}
+})
+ReactDOM.render(<TodoApp />, mountNode)
+```
 
 ### 2010+ Node Explosion
 
@@ -301,7 +345,7 @@ Browserify, Gulp, Grunt, Mocha, PhantomJS, DocPad, Yeoman, Babel, ChainyJS, npm 
 
 ### 2013+ Modern Web
 
-#### HTML5
+#### Content Editable
 #### Web Sockets
 #### Web RTC
 #### ESNext
@@ -313,8 +357,10 @@ Browserify, Gulp, Grunt, Mocha, PhantomJS, DocPad, Yeoman, Babel, ChainyJS, npm 
 
 #### Robotics
 http://johnny-five.io
+http://www.nodecopter.com
 
 #### Desktop
 http://electron.atom.io
 
 #### Virtual DOM
+https://gitlab.com/balupton/virtual-dom-explained
