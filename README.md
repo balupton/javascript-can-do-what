@@ -1,6 +1,6 @@
 # JavaScript can do WHAT?!
 
-These are the notes for a talk I give. [Slides are here.](https://slides.com/balupton/what/) It was originally presented at [Port80 Perth - 2016 February Meetup](http://www.meetup.com/Port80-Perth/events/227567006/).
+These are the notes for a talk I give. [Slides are here.](https://slides.com/balupton/what/) It was originally presented at [Port80 Perth - 2016 February Meetup](http://www.meetup.com/Port80-Perth/events/227567006/) which can be [Watched Here](https://youtu.be/ACz5SH8Q43k).
 
 An overview of the latest capabilities from the JavaScript Web Development scene. includes overviews of the benefits and when to use, for the following:
 
