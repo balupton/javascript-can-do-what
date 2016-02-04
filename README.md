@@ -11,6 +11,11 @@ An overview of the latest capabilities from the JavaScript Web Development scene
 
 Suitable for beginners and professionals. Will describe each section, and touch on basic examples. Depth is available on questions.
 
+[Slides.](https://slides.com/balupton/what/) Presented at:
+
+- [Port80 Perth - 2016 February Meetup](http://www.meetup.com/Port80-Perth/events/227567006/)
+
+
 ## History
 
 ### 1995+ Forms
