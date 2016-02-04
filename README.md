@@ -1,5 +1,7 @@
 # JavaScript can do WHAT?!
 
+These are the notes for a talk I give. [Slides are here.](https://slides.com/balupton/what/) It was originally presented at [Port80 Perth - 2016 February Meetup](http://www.meetup.com/Port80-Perth/events/227567006/).
+
 An overview of the latest capabilities from the JavaScript Web Development scene. includes overviews of the benefits and when to use, for the following:
 
 * A brief history of JavaScript (90s, 00s, Prototype, jQuery, Backbone, TodoMVC, Virtual DOM, Node, Servers, Desktop)
@@ -10,10 +12,6 @@ An overview of the latest capabilities from the JavaScript Web Development scene
 * Browser hinderances like the DOM and the introduction of the Virtual DOM (React.js) as well as creating native iOS applications using React’s Virtual DOM using React Native
 
 Suitable for beginners and professionals. Will describe each section, and touch on basic examples. Depth is available on questions.
-
-[Slides.](https://slides.com/balupton/what/) Presented at:
-
-- [Port80 Perth - 2016 February Meetup](http://www.meetup.com/Port80-Perth/events/227567006/)
 
 
 ## History
