@@ -26,21 +26,21 @@ else if ( $_POST['name'] ) {
 	<script>(function () {
 	var app = window.app = {}
 	// Server-Side Validation
-    app.validate = function (url, data, next) {
+    app.request = function (url, data, next) {
 		var request = new XMLHttpRequest()
 		request.onreadystatechange = function () {
-			var DONE = this.DONE || 4
-			if (this.readyState === DONE) {
-			    try {
-			        var result = JSON.parse(request.responseText)
-			        if ( !result.success ) {
-			            throw new Error(result.message || 'Validation of the form failed')
-			        }
-			    }
-			    catch (error) {
-			        return next(error)
-			    }
-			    return next()
+			if ( this.readyState === (this.done || 4) ) {
+                var result = null
+                try {
+                    result = JSON.parse(request.responseText)
+                }
+                catch (error) { // response was invalid json
+                    return next(new Error('Invalid response: ' + error.message))
+                }
+                if ( !result.success ) { // response had error
+                    return next(new Error(result.message || 'Unknown server error.'))
+                }
+                return next(null, result)
 			}
 		}
 		request.open('POST', url, true)
@@ -48,25 +48,24 @@ else if ( $_POST['name'] ) {
 		request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
 		request.send('data='+JSON.stringify(data))
 	}
+
 	// Client-Side Asynchronous Submission
 	app.submit = function (form) {
 	    if ( form.validated ) {
 	        return true  // continue with form submission
 	    }
-	    else {
-	        var name = document.getElementById('name').value
-	        window.app.validate(form.action || document.location.href, {name: name}, function (error) {
-	            if ( error ) {
-			        document.getElementById('error').innerHTML = error.message || error.toString()
-			        form.validated = false
-	            }
-	            else {
-	                form.validated = true
-	                form.submit()
-	            }
-	        })
-	        return false  // cancel form submission
-	    }
+        var name = document.getElementById('name').value
+        window.app.request(form.action || document.location.href, {name: name}, function (error, result) {
+            if ( error ) {
+		        document.getElementById('error').innerHTML = error.message || error.toString()
+		        form.validated = false
+            }
+            else {
+                form.validated = true
+                form.submit()
+            }
+        })
+        return false  // cancel form submission
 	}
 	})()</script>
 </head>
