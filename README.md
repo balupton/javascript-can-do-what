@@ -43,12 +43,12 @@ Think of your typical yet simple government form validation.
 ``` javascript
 var request = new XMLHttpRequest()
 request.onreadystatechange = function () {
-	if (this.readyState === 4) {
+    if (this.readyState === 4) {
         var result = JSON.parse(request.responseText)
         if ( !result.success ) {
             throw new Error(result.message || 'Validation of the form failed')
         }
-	}
+    }
 }
 ```
 
@@ -119,8 +119,8 @@ In late 2007, [jQuery UI](https://en.wikipedia.org/wiki/JQuery_UI) came out, acc
 
 ``` javascript
 $.prototype.log = function () {
-	var $el = this
-	alert($el.html())
+    var $el = this
+    alert($el.html())
 }
 $('p.surprise').addClass('ohmy').show('slow').log()
 ```
@@ -135,25 +135,25 @@ In early 2008, [John Resig](http://ejohn.org) (author of jQuery) published [Simp
 
 ``` javascript
 var Person = Class.extend({
-  init: function(isDancing){
-    this.dancing = isDancing
-  },
-  dance: function(){
-    return this.dancing
-  }
+    init: function(isDancing){
+        this.dancing = isDancing
+    },
+    dance: function(){
+        return this.dancing
+    }
 });
 
 var Ninja = Person.extend({
-	init: function(){
-		this._super(false)
-	},
-	dance: function(){
-		// Call the inherited version of dance()
-		return this._super()
-	},
-	swingSword: function(){
-		return true
-	}
+    init: function(){
+        this._super(false)
+    },
+    dance: function(){
+        // Call the inherited version of dance()
+        return this._super()
+    },
+    swingSword: function(){
+        return true
+    }
 });
 
 var p = new Person(true)
@@ -180,7 +180,7 @@ In 2008, [`window.onhashchange`](https://developer.mozilla.org/en-US/docs/Web/Ev
 
 ``` javascript
 window.location.onhashchange = function () {
-	alert('hash:', window.location.hash)
+    alert('hash:', window.location.hash)
 }
 window.location.hash = 'one'  // alerts "hash: one"
 window.location.hash = 'two'  // alerts "hash: two"
@@ -196,7 +196,7 @@ In 2011, [`window.onpopstate`](https://developer.mozilla.org/en-US/docs/Web/Even
 
 ``` javascript
 window.location.onpopstate = function () {
-	alert('location: ' + document.location.href + ', and the state has changed to: ' + JSON.stringify(event.state))
+    alert('location: ' + document.location.href + ', and the state has changed to: ' + JSON.stringify(event.state))
 }
 history.pushState({page: 1}, "title 1", "?page=1");
 history.pushState({page: 2}, "title 2", "?page=2");
@@ -219,9 +219,9 @@ There would later go on to become very popular.
 
 ``` html
 <div class="smarty">
-	{$myvar|default:"hi"|capitalize}
-	{assign var="myvar" value="hello"}
-	{$myvar|default:"hi"|capitalize}
+    {$myvar|default:"hi"|capitalize}
+    {assign var="myvar" value="hello"}
+    {$myvar|default:"hi"|capitalize}
 </div>
 <script>$('.smarty').populate()</script>
 ```
@@ -233,13 +233,13 @@ In late 2010, [Backbone](https://en.wikipedia.org/wiki/Backbone.js) came out, ac
 
 ``` javascript
 var MessageList = Backbone.View.extend({
-	initialize: function() {
-		var messages = this.collection
-		messages.on("reset", this.render, this)
-		messages.on("add", this.addMessage, this)
-		messages.on("remove", this.removeMessage, this)
-		messsages.each(this.addMessage, this)
-	}
+    initialize: function() {
+        var messages = this.collection
+        messages.on("reset", this.render, this)
+        messages.on("add", this.addMessage, this)
+        messages.on("remove", this.removeMessage, this)
+        messsages.each(this.addMessage, this)
+    }
 })
 // Later, in the app...
 Inbox.messages.add(newMessage);
@@ -260,40 +260,40 @@ In 2012, other client-side application libraries reached maturity, such as [Angu
 
 ``` javascript
 var TodoList = React.createClass({
-	render: function () {
-		var createItem = function (item) {
-			return <li key={item.id}>{item.text}</li>
-		}
-		return <ul>{this.props.items.map(createItem)}</ul>
-	}
+    render: function () {
+        var createItem = function (item) {
+            return <li key={item.id}>{item.text}</li>
+        }
+        return <ul>{this.props.items.map(createItem)}</ul>
+    }
 })
 var TodoApp = React.createClass({
-	getInitialState: function () {
-		return {items: [], text: ''}
-	},
-	onChange: function (e) {
-		this.setState({text: e.target.value})
-	},
-	handleSubmit: function (e) {
-	e.preventDefault()
-		var nextItems = this.state.items.concat([{
-			text: this.state.text, id: Date.now()
-		}])
-		var nextText = ''
-		this.setState({items: nextItems, text: nextText})
-	},
-	render: function () {
-		return (
-			<div>
-			<h3>TODO</h3>
-			<TodoList items={this.state.items} />
-			<form onSubmit={this.handleSubmit}>
-				<input onChange={this.onChange} value={this.state.text} />
-				<button>{'Add #' + (this.state.items.length + 1)}</button>
-			</form>
-			</div>
-		)
-	}
+    getInitialState: function () {
+        return {items: [], text: ''}
+    },
+    onChange: function (e) {
+        this.setState({text: e.target.value})
+    },
+    handleSubmit: function (e) {
+        e.preventDefault()
+        var nextItems = this.state.items.concat([{
+            text: this.state.text, id: Date.now()
+        }])
+        var nextText = ''
+        this.setState({items: nextItems, text: nextText})
+    },
+    render: function () {
+        return (
+            <div>
+                <h3>TODO</h3>
+                <TodoList items={this.state.items} />
+                <form onSubmit={this.handleSubmit}>
+                    <input onChange={this.onChange} value={this.state.text} />
+                    <button>{'Add #' + (this.state.items.length + 1)}</button>
+                </form>
+            </div>
+        )
+    }
 })
 ReactDOM.render(<TodoApp />, mountNode)
 ```
@@ -308,10 +308,10 @@ This unleashed JavaScript from the web browser and allowing code for the first n
 ``` javascript
 var http = require('http'), hostname = '127.0.0.1', port = 1337
 http.createServer(function (req, res) {
-	res.writeHead(200, { 'Content-Type': 'text/plain' })
-	res.end('Hello World\n')
+    res.writeHead(200, { 'Content-Type': 'text/plain' })
+    res.end('Hello World\n')
 }).listen(port, hostname, function () {
-	console.log('Server running at http://' + hostname + ':' + port + '/');
+    console.log('Server running at http://' + hostname + ':' + port + '/');
 });
 ```
 
